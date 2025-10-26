@@ -1,10 +1,8 @@
 { config, pkgs, ... }:
 {
   services = {
-    udiskie = {
+    udisks2 = {
       enable = true;
-      automount = true;
-      notify = true;
     };
     flatpak.enable = true;
     blueman.enable = true;

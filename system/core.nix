@@ -7,6 +7,7 @@
 {
   nix = {
     settings = {
+      sandbox = false;
       experimental-features = [
         "nix-command"
         "flakes"
@@ -32,7 +33,7 @@
     enable = true;
     plugins = [ pkgs.networkmanager-openvpn ];
   };
-  networking.enableIPv6 = false;
+  networking.enableIPv6 = true;
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;

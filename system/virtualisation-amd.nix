@@ -28,8 +28,11 @@
     options kvm_amd nested=1
     options kvm ignore_msrs=1 report_ignored_msrs=0
   '';
-  # packages for MacOS
+
   environment.systemPackages = with pkgs; [
+    docker-compose
+
+    # packages for MacOS
     dnsmasq
     vde2
     dosfstools

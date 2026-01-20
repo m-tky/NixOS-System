@@ -9,6 +9,9 @@
     };
     # driver for hardware
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    niri-flake = {
+      url = "github:sodiboo/niri-flake";
+    };
   };
 
   outputs =
@@ -16,6 +19,7 @@
       self,
       nixpkgs,
       home-manager,
+      niri-flake,
       ...
     }@inputs:
     let
@@ -31,8 +35,25 @@
       mkSystem =
         configPath:
         inputs.nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [ configPath ];
+          modules = [
+            { nixpkgs.hostPlatform = "x86_64-linux"; }
+            configPath
+            (
+              { pkgs, ... }:
+              {
+                nixpkgs.overlays = [
+                  inputs.niri-flake.overlays.niri
+                  (final: prev: {
+                    noctalia-shell = prev.noctalia-shell.override {
+                      calendarSupport = true;
+                    };
+                  })
+                ];
+              }
+            )
+            # ★ niri の NixOS module
+            inputs.niri-flake.nixosModules.niri
+          ];
           specialArgs = { inherit inputs; }; # <- 共通の引数
         };
 

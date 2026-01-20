@@ -39,47 +39,34 @@
   # services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.displayManager.gdm.enable = true;
+  # services.displayManager.gdm.enable = true;
 
   # services.desktopManager.gnome.enable = true;
   security.polkit.enable = true;
 
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-      kdePackages.xdg-desktop-portal-kde
-      xdg-desktop-portal-wlr
-      xdg-desktop-portal-hyprland
-    ];
-    config = {
-      common = {
-        default = "wlr";
-      };
-      gnome = {
-        default = [ "gtk" ];
-      };
-      kde = {
-        default = [ "kde" ];
-      };
-      hyprland = {
-        default = [ "hyprland" ];
-      };
-    };
   };
   # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+  services = {
+    upower.enable = true;
+    power-profiles-daemon.enable = true;
+    displayManager.gdm.enable = true;
+    xserver.xkb = {
+      layout = "us";
+      variant = "";
+    };
+    printing.enable = true;
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  # services.printing.enable = true;
   environment.systemPackages = with pkgs; [
+    android-tools
+    xwayland-satellite
     ethtool
     coreutils
     ncurses
-    polkit_gnome
     usbutils
     tree
     ripgrep

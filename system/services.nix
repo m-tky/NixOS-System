@@ -14,6 +14,7 @@
         PasswordAuthentication = false;
       };
     };
+    gnome.evolution-data-server.enable = true;
   };
   networking = {
     firewall = {

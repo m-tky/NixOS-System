@@ -14,6 +14,9 @@
     ];
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
+    kernel.sysctl = {
+      "net.ipv4.tcp_mtu_probing" = 1;
+    };
   };
 
   # Use latest kernel.
@@ -29,6 +32,5 @@
 
   # setting for clipboard
   services.spice-vdagentd.enable = true;
-  networking.interfaces.enp2s0f1.mtu = 1500;
   networking.interfaces.enp2s0f1.wakeOnLan.enable = true;
 }

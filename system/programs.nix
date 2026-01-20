@@ -15,7 +15,6 @@
       viAlias = true;
       vimAlias = true;
     };
-    adb.enable = true;
     tmux.enable = true;
     bat.enable = true;
     weylus = {
@@ -23,16 +22,16 @@
       users = [ "user" ];
       openFirewall = true;
     };
-    sway = {
+    # sway = {
+    #   enable = true;
+    #   xwayland.enable = true;
+    # };
+    niri = {
       enable = true;
-      xwayland.enable = true;
-    };
-    hyprland = {
-      enable = true;
-      # portalPackages = true;
-      # xwayland.enable = true;
+      package = pkgs.niri-unstable;
     };
     # hyprlock.enable = true;
   };
+  niri-flake.cache.enable = true;
   # services.hypridle.enable = true;
 }

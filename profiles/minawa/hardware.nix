@@ -13,9 +13,16 @@
   };
 
   # Use latest kernel.
-  hardware.enableAllFirmware = true;
-  hardware.cpu.intel.updateMicrocode = true;
-  hardware.bluetooth.enable = true;
+  hardware = {
+    cpu.amd.updateMicrocode = true;
+    hardware.bluetooth.enable = true;
+    hardware.bluetooth.powerOnBoot = true;
+    graphics.enable = true;
+    nvidia = {
+      modesetting.enable = true;
+      enabled = true;
+      open = false;
+  };
   networking.hostName = "minawa";
 
   # setting for clipboard

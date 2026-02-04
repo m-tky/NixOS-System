@@ -15,13 +15,6 @@
       viAlias = true;
       vimAlias = true;
     };
-    tmux.enable = true;
-    bat.enable = true;
-    weylus = {
-      enable = true;
-      users = [ "user" ];
-      openFirewall = true;
-    };
     niri = {
       enable = true;
       package = pkgs.niri-unstable;

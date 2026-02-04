@@ -57,6 +57,7 @@
       variant = "";
     };
     printing.enable = true;
+    udisks2.enable = true;
   };
 
   # Enable CUPS to print documents.
@@ -70,7 +71,6 @@
     usbutils
     tree
     ripgrep
-    pulseaudio
     inputs.home-manager.packages.${pkgs.system}.default
     ethtool
     nfs-utils

@@ -6,9 +6,9 @@
 }:
 
 {
-  users.users.user = {
+  users.users.takuya = {
     isNormalUser = true;
-    description = "takuya";
+    description = "mukai-takuya";
     extraGroups = [
       "networkmanager"
       "wheel"

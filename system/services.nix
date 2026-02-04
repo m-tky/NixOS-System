@@ -11,7 +11,7 @@
       enable = true;
       settings = {
         PermitRootLogin = "no";
-        PasswordAuthentication = false;
+        PasswordAuthentication = true;
       };
     };
     gnome.evolution-data-server.enable = true;

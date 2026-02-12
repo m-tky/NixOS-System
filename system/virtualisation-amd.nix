@@ -18,8 +18,9 @@
       #   unix_sock_rw_perms = "0770"
       # '';
 
-      qemu.swtpm = {
-        enable = true;
+      qemu = {
+        swtpm.enable = true;
+        vhostUserPackages = [ pkgs.virtiofsd ];
       };
     };
   };

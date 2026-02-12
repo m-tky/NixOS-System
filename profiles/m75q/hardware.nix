@@ -16,6 +16,7 @@
     loader.efi.canTouchEfiVariables = true;
     kernel.sysctl = {
       "net.ipv4.tcp_mtu_probing" = 1;
+      "net.ipv4.ip_forward" = 1;
     };
   };
 

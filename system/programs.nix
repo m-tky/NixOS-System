@@ -22,6 +22,7 @@
       users = [ "user" ];
       openFirewall = true;
     };
+    kdeconnect.enable = true;
     niri = {
       enable = true;
       package = pkgs.niri-unstable;

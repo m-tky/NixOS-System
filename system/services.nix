@@ -35,21 +35,21 @@
       ];
       # option for tailscale exitnode
       checkReversePath = "loose";
-      # port for kde connect
-      allowedTCPPortRanges = [
-        {
-          from = 1714;
-          to = 1764;
-        }
-        # { from = 37000; to = 44000; }
-      ];
-      allowedUDPPortRanges = [
-        {
-          from = 1714;
-          to = 1764;
-        }
-      ];
+      # NOTE:
+      # libvirt default NAT (virbr0) requires explicit FORWARD acceptance.
+      # When Tailscale or Docker is enabled, they may install their own
+      # FORWARD chains (e.g. ts-forward), which can prevent libvirt NAT
+      # from working correctly.
+      #
+      # Therefore, virbr0 forwarding is explicitly allowed here.
+      extraForwardRules = ''
+        # === libvirt NAT (virbr0) ===
+        # VM -> outside
+        iptables -A FORWARD -i virbr0 -j ACCEPT
+
+        # outside -> VM (return traffic)
+        iptables -A FORWARD -o virbr0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+      '';
     };
-    nftables.enable = true;
   };
 }

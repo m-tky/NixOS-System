@@ -31,6 +31,8 @@
         22
         # for ollama
         11434
+        # for openclaw
+        18789
         7777
       ];
       # option for tailscale exitnode

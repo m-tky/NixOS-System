@@ -3,6 +3,15 @@
 
 {
   programs = {
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+        glibc
+        zlib
+        libgcc
+        stdenv.cc.cc
+      ];
+    };
     wireshark = {
       enable = true;
       dumpcap.enable = true;

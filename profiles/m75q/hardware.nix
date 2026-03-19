@@ -31,6 +31,19 @@
     enable = true;
   };
 
+  hardware.graphics = {
+    enable = true;
+  };
+
+  security.pam.loginLimits = [
+    {
+      domain = "*";
+      item = "memlock";
+      type = "-";
+      value = "unlimited";
+    }
+  ];
+
   # setting for clipboard
   services.spice-vdagentd.enable = true;
   networking.interfaces.enp2s0f1.wakeOnLan.enable = true;

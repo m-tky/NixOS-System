@@ -6,10 +6,13 @@
     nix-ld = {
       enable = true;
       libraries = with pkgs; [
+        e2fsprogs
+        stdenv.cc.cc
+        openssl
         glibc
         zlib
         libgcc
-        stdenv.cc.cc
+        util-linux
       ];
     };
     wireshark = {

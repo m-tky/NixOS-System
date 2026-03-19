@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   boot = {
@@ -12,7 +17,18 @@
   hardware.cpu.amd.updateMicrocode = true;
   hardware.bluetooth.enable = true;
   networking.hostName = "mini";
+  hardware.graphics = {
+    enable = true;
+  };
 
+  security.pam.loginLimits = [
+    {
+      domain = "*";
+      item = "memlock";
+      type = "-";
+      value = "unlimited";
+    }
+  ];
   # setting for clipboard
   services.spice-vdagentd.enable = true;
 }
